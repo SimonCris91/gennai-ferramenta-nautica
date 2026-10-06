@@ -18,8 +18,10 @@ jobs:
         with:
           node-version: '18'
           package-manager-cache: false
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps --no-audit --no-fund
+      - name: Install legacy dependencies
+        run: |
+          npm install --legacy-peer-deps --no-audit --no-fund
+          npm install --no-save --legacy-peer-deps --no-audit --no-fund ajv@^8 ajv-keywords@^5
       - name: Build
         env:
           CI: 'true'
